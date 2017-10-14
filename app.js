@@ -7,7 +7,8 @@ var reply = require("./wx/reply");//微信外层业务逻辑，选择回复内�
 
 
 var app = new Koa();
-
+var job=require('./spider/spider')
+job()
 app.use(m(config.wechat,reply.reply));
 console.log("app is starting");
 app.listen(1234);
