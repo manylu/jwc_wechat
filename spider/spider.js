@@ -9,13 +9,14 @@ var cronJob=require('cron').CronJob
 var ep=new eventproxy()
 var titleNum=0
 var timestamp=(new Date()).valueOf()*100000; 
-var titleRecordUrl='http://webplus.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp
-
+var targetUrl=['http://webplus.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp]
+// var titleRecordUrl='http://webplus.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp
+var jsonPath=['./data/atticleInfo.json','./data/dynamicEntry.json']
 // var ArticleUrls=[]
 var count=0
-
+// var requireNumber=0
 var titles=[]
-function dataHandle(dataHandle){
+function dataHandle(dataHandle,target,requireNumber){
     // var $=cheerio.load(html)
     // var essayMore=$('#container_content').find('table')
     // .find('table').find('td').next().children('table')
@@ -23,11 +24,13 @@ function dataHandle(dataHandle){
     // var maxMessageUrl=content.match(/p\/(\S*)\/list.htm/)[1]
     // console.log(maxMessageUrl)
     var pageUrls=[]
+    console.log(target)
+    var famillyUrl=target.match(/p\/(\S*)\/i./)[1]  
     for(var i=dataHandle;i>0;i--){
-        pageUrls.push('http://webplus.scuec.edu.cn/s/27/t/1536/p/14/i/'+i+'/list.jspy')
+        pageUrls.push('http://webplus.scuec.edu.cn/s/27/t/1536/p/'+ famillyUrl +'/i/'+i+'/list.jspy')
     }
     console.log(pageUrls)
-    start(pageUrls)
+    start(pageUrls,requireNumber)
     
     // setTimeout(function(){
     //     // console.log(announcement)
@@ -46,13 +49,14 @@ function saveData(path,data){
     })
 }
 
-function start(pageUrls){
+function start(pageUrls,requireNumber){
+    console.log('进入start')
     var count=0
     var announcement=[]
     pageUrls.forEach(function(pageUrl) {
         http.get(pageUrl,function(res){
             var html='';
-            // console.log(essayUrl)
+            console.log(pageUrl)
             res.on('data',function(data){
                 html+=data;
             })
@@ -61,12 +65,14 @@ function start(pageUrls){
                 // var maxPage=parseInt(html/14)
                 // var essayHref=$('#newlist').find('table').find('tr').find('td').eq(1).find('table').find('a').attr('href');
                 var titleList=$('#newslist').find('table').eq(0).find('tr').find('table').find('a')
-
+                console.log('进入end')
+                console.log(titleNum)
                 titleList.each(function(item){
                     var title=$(this).find('font').text()
                     var link='http://www.scuec.edu.cn'+$(this).attr('href')
                     // ArticleUrls.push(link)
-                    
+                    // console.log(link)
+
                     // console.log(link)
                     // getArticle(link,title)
                    
@@ -115,7 +121,22 @@ function start(pageUrls){
                     //     ep.emit('duanluo',dl)
                         
                     // })
-               
+                    var tableList=$('.content table tr')
+                    for(var i=0;i<tableList.length;i++){
+                        var td=$('.content table tr').eq(i).children()
+                        var tr=[];
+                        // console.log(td)
+                        // console.log(td.text())
+                        for(var j=0;j<td.length;j++){
+                            // if(td.length<$('.content table tr').eq(0).children().length){
+                            //     tr.push('')
+                            // }
+                            tr.push(td.eq(j).find('p').text())
+                            // console.log(tr)
+                        }
+                        table.push(tr)
+                        
+                    }
                     // console.log(table)
                     // ep.after('duanluo',duanluoLength,function(p){
                         // console.log(p)
@@ -159,7 +180,12 @@ function start(pageUrls){
             // console.log('时间排序后：',)
             // console.log('json:',announcement)
             
-            saveData(path.join(__dirname,'./data/atticleInfo.json'),announcement)
+            // saveData(jsonPath[requireNumber],announcement)
+            saveData(path.join(__dirname,jsonPath[requireNumber]),announcement)
+            requireNumber++;
+            if(requireNumber<targetUrl.length){
+                dataRequire(requireNumber);
+            }
         });
 
 
@@ -167,26 +193,30 @@ function start(pageUrls){
         
         
 }
-
-function job(){
-    return new cronJob('00 59 21 * * *',function(){
-        http.get(titleRecordUrl,function(res){
-            var html=''
-        
-            res.on('data',function(data){
-                html+=data
-            })  
-            res.on('end',function(){
-        
-                var maxPage=parseInt(html/14)
-                titleNum=parseInt(html)
-                // console.log(titleNum)
-                console.log("开始执行！")
-                dataHandle(maxPage)
-            })
-        }).on('error',function(){
-            console.log('获取出错！')
+function dataRequire(requireNumber){
+    
+    http.get(targetUrl[requireNumber],function(res){
+        var html=''
+    
+        res.on('data',function(data){
+            html+=data
+        })  
+        res.on('end',function(){
+    
+            var maxPage=Math.ceil(html/14)
+            titleNum=parseInt(html)
+            console.log(maxPage)
+            console.log("开始执行！")
+            dataHandle(maxPage,targetUrl[requireNumber],requireNumber)
         })
+    }).on('error',function(){
+        console.log('获取出错！')
+    })
+}
+function job(){
+    var requireNumber=0
+    return new cronJob('00 48 17 * * *',function(){
+        dataRequire(requireNumber)
     },null,true,'Asia/Chongqing');
 
 }
