@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <div class="informs">
+    <p>重要通知 <input class="green" type="button" value="所有通知"></p>
+    <% for(var i =0; i < informs.length; i++){ %>
+      <h3><%= informs[i].title %></h3>
+    <% } %>
+ </div>
+    
+
+  </body>
+</html>
