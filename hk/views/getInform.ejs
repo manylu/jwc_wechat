@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>123</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
+    <link rel='stylesheet' href='/stylesheets/weui.min.css' />
+  </head>
+  <body>
+  <div class="informs">
+    <div class="informPic">
+      <img class="picRes" src="./images/inform.jpg" alt="">    
+    </div>
+    <p>重要通知 <a href="javascript:;" class="informBtn">所有通知</a></p>
+    <% for(var i =0; i < informs.length; i++){ %>
+      <p><span class="dian"></span><a class="informTitle" href="./getInform/<%- i %>"><%= informs[i].title %></a><p>
+    <% } %>
+ </div>
+    
+  
+  <script src='/javascripts/jquery-2.1.4.js'></script>
+  <script src='/javascripts/jquery-weui.min.js'></script>
+  </body>
+</html>

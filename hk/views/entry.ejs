@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>123</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
+    <link rel='stylesheet' href='/stylesheets/weui.min.css' />
+  </head>
+  <body>
+  <div class="entry">
+   
+    <p class="entryTitle"><%= entry.title %><p>
+    <p class="entryDate"><%= entry.date %><p>
+    <div class="entryContent">
+      <% for(let i = 0;i<entry.content.entry.length;i++){ %>
+        <p><%= entry.content.entry[i] %><p>
+      <% } %>
+    </div>
+ </div>
+    
+  
+  <script src='/javascripts/jquery-2.1.4.js'></script>
+  <script src='/javascripts/jquery-weui.min.js'></script>
+  </body>
+</html>

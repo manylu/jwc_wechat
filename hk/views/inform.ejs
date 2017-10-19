@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>123</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
+    <link rel='stylesheet' href='/stylesheets/weui.min.css' />
+  </head>
+  <body>
+  <div class="inform">
+   
+    <p class="informTitle"><%= inform.title %><p>
+    <p class="informDate"><%= inform.date %><p>
+    <div class="informContent">
+      <% for(let i = 0;i<inform.content.entry.length;i++){ %>
+        <p><%= inform.content.entry[i] %><p>
+      <% } %>
+    </div>
+ </div>
+    
+  
+  <script src='/javascripts/jquery-2.1.4.js'></script>
+  <script src='/javascripts/jquery-weui.min.js'></script>
+  </body>
+</html>

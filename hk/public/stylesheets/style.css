@@ -1,0 +1,71 @@
+*{
+	text-decoration: none;
+}
+.dian{
+	display: inline-block;
+	border-radius: 50%;
+	margin-right: 2px;
+	width: 2px;
+	height: 2px;
+	border: 2px solid #000;
+	background-color: #000;
+}
+.picRes{
+	max-width: 100%;
+}
+.informs{
+	font-size: 14px;
+	padding: 10px;
+}
+.informPic{
+	height: 250px;
+	margin-bottom: 10px;
+}
+.informBtn{
+	float: right;
+	padding:0px 5px;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #1aad19;
+}
+.informTitle{
+	color: #000;
+	margin-top: 5px;
+}
+.informTitle{
+
+}
+.informDate{
+
+}
+.informContent{
+
+}
+.entrys{
+	font-size: 14px;
+	padding: 10px;
+}
+.entryPic{
+	height: 250px;
+	margin-bottom: 10px;
+}
+.entryBtn{
+	float: right;
+	padding:0px 5px;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #1aad19;
+}
+.entryTitle{
+	color: #000;
+	margin-top: 5px;
+}
+.entryTitle{
+
+}
+.entryDate{
+
+}
+.entryContent{
+
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <div class="entrys">
+    <div class="informPic">
+      <img class="picRes" src="./images/inform.jpg" alt="">    
+    </div>
+    <p>教务动态</p>
+    <% for(var i =0; i < entrys.length; i++){ %>
+      <p><span class="dian"></span><a class="entryTitle" href="./getEntry/<%- i %>"><%= entrys[i].title %></a><p>
+    <% } %>
+ </div>
+ 
+    
+
+  </body>
+</html>
