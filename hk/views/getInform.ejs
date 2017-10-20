@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>123</title>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
     <link rel='stylesheet' href='/stylesheets/weui.min.css' />
@@ -11,10 +12,23 @@
     <div class="informPic">
       <img class="picRes" src="./images/inform.jpg" alt="">    
     </div>
-    <p>重要通知 <a href="javascript:;" class="informBtn">所有通知</a></p>
-    <% for(var i =0; i < informs.length; i++){ %>
-      <p><span class="dian"></span><a class="informTitle" href="./getInform/<%- i %>"><%= informs[i].title %></a><p>
-    <% } %>
+    <div class="informWrap">
+      <p><span class="bloder">重要通知</span> <a href="./getInform_10" class="informBtn">所有通知</a></p>
+      <% for(var i =0; i < informs.length; i++){ %>
+      <div class="titleWrap">
+      
+        <div>
+          <span class="dian"></span>
+        </div>
+
+        <div style="width: 100%;">
+          <p class="informTitle"><a href="./getInform/<%- i %>"><%= informs[i].title %></a><p>
+        </div>
+
+      </div>
+      <% } %>
+    </div>
+    
  </div>
     
   

@@ -1,5 +1,11 @@
 *{
 	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	font-family:Tahoma,Verdana,STHeiTi,simsun,sans-serif;
+}
+.bloder{
+	font-weight: bolder;
 }
 .dian{
 	display: inline-block;
@@ -10,62 +16,88 @@
 	border: 2px solid #000;
 	background-color: #000;
 }
+.titleWrap{
+	display: flex;
+	margin-top: 10px;
+}
 .picRes{
 	max-width: 100%;
 }
 .informs{
 	font-size: 14px;
-	padding: 10px;
 }
 .informPic{
-	height: 250px;
 	margin-bottom: 10px;
+}
+.informWrap{
+	padding: 0px 15px;
 }
 .informBtn{
 	float: right;
 	padding:0px 5px;
 	border-radius: 3px;
 	color: #fff;
-	background-color: #1aad19;
+	background-color: rgba(26,173,25,1);
 }
 .informTitle{
+	height: 39px;
+	width: 100%;
+	margin-left: 8px;
+	background-color: rgba(204,204,204,.3);
+}
+.informTitle a{
 	color: #000;
-	margin-top: 5px;
 }
-.informTitle{
-
+.informTitle_1{
+	width: 80%;
+	margin: 10px auto;
+	color: #86a1ba;
 }
 .informDate{
-
+	width: 80%;
+	margin: 0px auto;
+	color: #888;
 }
 .informContent{
-
+	width: 80%;
+	margin: 0 auto;
 }
 .entrys{
 	font-size: 14px;
-	padding: 10px;
 }
 .entryPic{
-	height: 250px;
 	margin-bottom: 10px;
 }
-.entryBtn{
+.entryWrap{
+	padding: 0px 15px;
+}
+/*.entryBtn{
 	float: right;
 	padding:0px 5px;
 	border-radius: 3px;
 	color: #fff;
-	background-color: #1aad19;
-}
+	background-color: rgba(26,173,25,1);
+}*/
 .entryTitle{
+	height: 39px;
+	width: 100%;
+	margin-left: 8px;
+	background-color: rgba(204,204,204,.3);
+}
+.entryTitle a{
 	color: #000;
-	margin-top: 5px;
 }
-.entryTitle{
-
+.entryTitle_1{
+	width: 80%;
+	margin: 10px auto;
+	color: #86a1ba;
 }
 .entryDate{
-
+	width: 80%;
+	margin: 0px auto;
+	color: #888;
 }
 .entryContent{
-
+	width: 80%;
+	margin: 0 auto;
 }

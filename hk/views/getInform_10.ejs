@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>教务处</title>
+    <title>123</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
     <link rel='stylesheet' href='/stylesheets/weui.min.css' />
   </head>
   <body>
-  <div class="inform">
+  <div class="informs">
     <div class="informPic">
-      <img class="picRes" src="../images/inform.jpg" alt=""> 
+      <img class="picRes" src="./images/inform.jpg" alt="">    
     </div>
-
-    <p class="informTitle_1"><%= inform.title %><p>
-    <p class="informDate">发布时间:<%= inform.date %><p>
-    <div class="informContent">
-      <% for(let i = 0;i<inform.content.entry.length;i++){ %>
-        <p><%= inform.content.entry[i] %><p>
+    <div class="informWrap">
+      <p>重要通知 <a href="./getInform" class="informBtn">最新通知</a></p>
+      <% for(var i =0; i < 10; i++){ %>
+        <p class="informTitle"><span class="dian"></span><a href="./getInform/<%- i %>"><%= informs[i].title %></a><p>
       <% } %>
     </div>
+    
  </div>
     
   
