@@ -9,8 +9,8 @@ var cronJob=require('cron').CronJob
 var ep=new eventproxy()
 var titleNum=0
 var timestamp=(new Date()).valueOf()*100000; 
-var targetUrl=['http://webplus.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp]
-// var titleRecordUrl='http://webplus.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp
+var targetUrl=['http://www.scuec.edu.cn/s/27/t/1536/p/14/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp]
+// var titleRecordUrl='http://www.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp
 var jsonPath=['./data/atticleInfo.json','./data/dynamicEntry.json']
 // var ArticleUrls=[]
 var count=0
@@ -27,7 +27,7 @@ function dataHandle(dataHandle,target,requireNumber){
     console.log(target)
     var famillyUrl=target.match(/p\/(\S*)\/i./)[1]  
     for(var i=dataHandle;i>0;i--){
-        pageUrls.push('http://webplus.scuec.edu.cn/s/27/t/1536/p/'+ famillyUrl +'/i/'+i+'/list.jspy')
+        pageUrls.push('http://www.scuec.edu.cn/s/27/t/1536/p/'+ famillyUrl +'/i/'+i+'/list.htm')
     }
     console.log(pageUrls)
     start(pageUrls,requireNumber)
@@ -53,10 +53,10 @@ function start(pageUrls,requireNumber){
     console.log('进入start')
     var count=0
     var announcement=[]
-    pageUrls.forEach(function(pageUrl) {
-        http.get(pageUrl,function(res){
+    for(let i=0;i<pageUrls.length;i++){
+        http.get(pageUrls[i],function(res){
             var html='';
-            console.log(pageUrl)
+            // console.log('pageUrl:',pageUrl)
             res.on('data',function(data){
                 html+=data;
             })
@@ -75,8 +75,9 @@ function start(pageUrls,requireNumber){
 
                     // console.log(link)
                     // getArticle(link,title)
-                   
+                    // console.log(link)
                     ep.emit('articleHtml',link)
+                    console.log(link)
                 })
                
             //    console.log(announcement)
@@ -88,17 +89,18 @@ function start(pageUrls,requireNumber){
         })
 
         
-    });
+    };
     // console.log(announcement)
     ep.after('articleHtml',titleNum,function(article){
         console.log('进入after')
-        console.log(titleNum)
+        // console.log(article)
         var curCount = 0;
+        
         var reptileMove = function(url,callback){
             // 延迟毫秒数
             var delay = parseInt((Math.random() * 30000000) % 1000, 10);
             curCount++;
-            // console.log('现在的并发数是', curCount, '，正在抓取的是', url, '，耗时' + delay + '毫秒'); 
+            // console.log('现在的并发数是', curCount, '，正在抓取的是', url, '，耗时' + delay + '毫秒'+'次数'+count++); 
             superagent
                 .get(url)
                 .end(function(error,data){
@@ -107,7 +109,7 @@ function start(pageUrls,requireNumber){
                         
                     }
                     var $=cheerio.load(data.text)
-                    
+                    // console.log(url)
                     var title=$('.biaoti3').text()
                     // titles.push(title)
                     var matches=$('.STYLE2').text().match(/\d+/g)
@@ -152,8 +154,9 @@ function start(pageUrls,requireNumber){
                             entry:entry,
                             table:table
                         } 
-                    } 
-                   
+                    }
+                    console.log(title) 
+                    // saveData(path.join(__dirname,'./data/ceshi.json'),announcement)
                     announcement.push(list)
                     // })
                     
@@ -172,10 +175,15 @@ function start(pageUrls,requireNumber){
         async.mapLimit(article, 5 ,function (url, callback) {
             reptileMove(url, callback);
           }, function (err,result) {
-            console.log('标题总量',titles.length)
+            
             announcement.sort(function(a,b){
-                return  Date.parse(b.date)-Date.parse(a.date);//时间正序
+                var str1=a.date.replace(/-/g,'/')
+                var sortDate1=new Date(str1)
+                var str2=b.date.replace(/-/g,'/')
+                var sortDate2=new Date(str2)
+                return  Date.parse(sortDate2)-Date.parse(sortDate1);//时间正序
             })
+            // console.log('标题总量',announcement)
             // console.log('标题',titles)
             // console.log('时间排序后：',)
             // console.log('json:',announcement)
@@ -205,6 +213,9 @@ function dataRequire(requireNumber){
     
             var maxPage=Math.ceil(html/14)
             titleNum=parseInt(html)
+            if(maxPage>10){
+                maxPage=10
+            }
             console.log(maxPage)
             console.log("开始执行！")
             dataHandle(maxPage,targetUrl[requireNumber],requireNumber)
@@ -215,7 +226,7 @@ function dataRequire(requireNumber){
 }
 function job(){
     var requireNumber=0
-    return new cronJob('00 48 17 * * *',function(){
+    return new cronJob('00 */2 * * * *',function(){
         dataRequire(requireNumber)
     },null,true,'Asia/Chongqing');
 
