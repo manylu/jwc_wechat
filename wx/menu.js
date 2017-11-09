@@ -1,24 +1,24 @@
 "use strict";
-
+var hostname = 'http://ducheng.tunnel.qydev.com'
 module.exports = {
 	"button": [{
 		"name": "微教务",
 		"sub_button":[{
 			"name": "查询成绩",
 			"type": "view",
-			"url": "http://baidu.com"
+			"url": "http://ssfw.scuec.edu.cn/ssfw/zhcx/cjxx.do"
 		},{
 			"name": "考试安排",
 			"type": "view",
-			"url": "http://baidu.com"
+			"url": "http://ssfw.scuec.edu.cn/ssfw/xsks/kcxx.do"
 		},{
 			"name": "课表",
 			"type": "view",
-			"url": "http://baidu.com"
+			"url": "http://id.scuec.edu.cn/authserver/weixinQYLogin.do?success=http://id.scuec.edu.cn /authserver/login?service=http://ssfw.scuec.edu.cn/ssfw/pkgl/kcbxx/4/2017-2018-1.do?flag=4&xnxqdm=2017-2018-1"
 		},{
 			"name": "教室",
 			"type": "view",
-			"url": "http://baidu.com"
+			"url": "http://www.scuec.edu.cn/"
 		},{
 			"name": "校历",
 			"type": "view",
@@ -29,11 +29,11 @@ module.exports = {
 		"sub_button": [{
 			"name": "重要通知",
 			"type": "view",
-			"url": "http://baidu.com"
+			"url": hostname + "/getInform"
 		},{
 			"name": "讲座预告",
 			"type": "view",
-			"url": "http://baidu.com"
+			"url": hostname + "/getEntry"
 		},{
 			"name": "教务动态",
 			"type": "view",

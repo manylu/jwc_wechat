@@ -40,10 +40,11 @@
 	background-color: rgba(26,173,25,1);
 }
 .informTitle{
-	height: 39px;
-	width: 100%;
 	margin-left: 8px;
 	background-color: rgba(204,204,204,.3);
+	overflow: hidden;/*超出部分隐藏*/
+    white-space: nowrap;/*不换行*/
+    text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 .informTitle a{
 	color: #000;
@@ -79,10 +80,11 @@
 	background-color: rgba(26,173,25,1);
 }*/
 .entryTitle{
-	height: 39px;
-	width: 100%;
 	margin-left: 8px;
 	background-color: rgba(204,204,204,.3);
+	overflow: hidden;/*超出部分隐藏*/
+    white-space: nowrap;/*不换行*/
+    text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 .entryTitle a{
 	color: #000;
@@ -100,4 +102,18 @@
 .entryContent{
 	width: 80%;
 	margin: 0 auto;
+}
+.table-wrap{
+	font-size: 12px;
+	//display: flex;
+}
+.table-cell{
+	//flex: 1;
+	display: flex;
+	//flex-direction: row-reverse;
+}
+.table-td{
+	flex: 1;
+	word-wrap: break-word;
+	border: 1px solid #000;
 }
