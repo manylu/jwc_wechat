@@ -6,19 +6,19 @@ module.exports = {
 		"sub_button":[{
 			"name": "查询成绩",
 			"type": "view",
-			"url": "http://ssfw.scuec.edu.cn/ssfw/zhcx/cjxx.do"
+			"url": "http://ssfw.scuec.edu.cn/ssfw/cas_index.jsp"
 		},{
 			"name": "考试安排",
 			"type": "view",
-			"url": "http://ssfw.scuec.edu.cn/ssfw/xsks/kcxx.do"
+			"url": "http://ehall.scuec.edu.cn/publicapp/sys/ksapapp/index.do"
 		},{
 			"name": "课表",
 			"type": "view",
-			"url": "http://id.scuec.edu.cn/authserver/weixinQYLogin.do?success=http://id.scuec.edu.cn /authserver/login?service=http://ssfw.scuec.edu.cn/ssfw/pkgl/kcbxx/4/2017-2018-1.do?flag=4&xnxqdm=2017-2018-1"
+			"url": "http://ehall.scuec.edu.cn/publicapp/sys/mykbxt/index.do#/curriculum"
 		},{
 			"name": "教室",
 			"type": "view",
-			"url": "http://www.scuec.edu.cn/"
+			"url": "http://ehall.scuec.edu.cn/publicapp/sys/czxs/index.do"
 		},{
 			"name": "校历",
 			"type": "view",
