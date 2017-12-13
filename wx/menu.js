@@ -6,7 +6,7 @@ module.exports = {
 		"sub_button":[{
 			"name": "查询成绩",
 			"type": "view",
-			"url": "http://ssfw.scuec.edu.cn/ssfw/cas_index.jsp"
+			"url": "http://ehall.scuec.edu.cn/publicapp/sys/cjcxapp/mobile/gradesQuery/index.html"
 		},{
 			"name": "考试安排",
 			"type": "view",

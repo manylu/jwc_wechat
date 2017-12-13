@@ -117,3 +117,13 @@
 	word-wrap: break-word;
 	border: 1px solid #000;
 }
+.tableRe{
+	border-collapse:collapse;
+	font-size: 14px;
+}
+.trRe{
+
+}
+.tdRe{
+	border: 1px solid #000;
+}
