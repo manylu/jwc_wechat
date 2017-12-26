@@ -58,6 +58,22 @@ router.get('/getEntry',async function (ctx, next) {
    
 })
 
+router.get('/getWorkFlow',async function (ctx, next) {
+  var workFlows = '';
+  var file="./spider/data/workFlow.json";
+  var result=fs.readFileSync(file);
+  workFlows = JSON.parse(result);
+
+  ctx.state = {
+    title: '业务流程'
+  };
+
+  await ctx.render('getWorkFlow', {
+      workFlows:workFlows
+    });
+   
+})
+
 router.get('/getInform/:id', async (ctx, next) => {
   var informs = ''
   var inform = ''
