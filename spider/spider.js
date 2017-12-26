@@ -9,9 +9,9 @@ var cronJob=require('cron').CronJob
 var ep=new eventproxy()
 var titleNum=0
 var timestamp=(new Date()).valueOf()*100000; 
-var targetUrl=['http://www.scuec.edu.cn/s/27/t/1536/p/14/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp]
+var targetUrl=['http://www.scuec.edu.cn/s/27/t/1536/p/14/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/17/i.htm?'+timestamp]
 // var titleRecordUrl='http://www.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp
-var jsonPath=['./data/atticleInfo.json','./data/dynamicEntry.json']
+var jsonPath=['./data/atticleInfo.json','./data/dynamicEntry.json','./data/workFlow.json']
 // var ArticleUrls=[]
 var count=0
 // var requireNumber=0
@@ -213,8 +213,10 @@ function dataRequire(requireNumber){
     
             var maxPage=Math.ceil(html/14)
             titleNum=parseInt(html)
-            if(maxPage>10){
-                maxPage=10
+            if(titleNum>140)
+            {
+                maxPage=10;
+                titleNum=140
             }
             console.log(maxPage)
             console.log("开始执行！")
@@ -226,10 +228,11 @@ function dataRequire(requireNumber){
 }
 function job(){
     var requireNumber=0
-    return new cronJob('00 30 10 * * *',function(){
+    return new cronJob('00 */2 * * * *',function(){
         dataRequire(requireNumber)
     },null,true,'Asia/Chongqing');
 
 }
-module.exports=job
+job()
+// module.exports=job
 

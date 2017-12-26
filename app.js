@@ -52,7 +52,7 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 //2
-//job();
+job();
 app.use(m(config.wechat,reply.reply));
 console.log("app is starting");
 app.listen(1234);
