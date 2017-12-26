@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>业务流程</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
+    <link rel='stylesheet' href='/stylesheets/weui.min.css' />
+  </head>
+  <body>
+  <div class="entry">
+    <div class="informPic">
+      <img class="picRes" src="../images/inform.jpg" alt="">    
+    </div>
+    <p class="entryTitle_1"><%= entry.title %><p>
+    <p class="entryDate"><%= entry.date %><p>
+    <div class="entryContent">
+      <% for(let i = 0;i<entry.content.entry.length;i++){ %>
+        <p><%= entry.content.entry[i] %><p>
+      <% } %>
+
+      <table class="tableRe">
+        <% for(let j = 0;j<entry.content.table.length;j++){ %>
+          <tr class="trRe">
+            <% if(entry.content.table[j].length<entry.content.table[0].length) { %>
+            <td class="tdRe"></td>
+            <% } %>
+            <% for(let k=0;k<entry.content.table[j].length;k++){ %>
+            <td class="tdRe">
+              <%= entry.content.table[j][k] %>
+            </td>
+            <% } %>
+          </tr>
+        <% } %>
+      </table>
+
+    </div>
+ </div>
+    
+  
+  <script src='/javascripts/jquery-2.1.4.js'></script>
+  <script src='/javascripts/jquery-weui.min.js'></script>
+  </body>
+</html>
