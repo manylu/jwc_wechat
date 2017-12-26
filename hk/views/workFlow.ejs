@@ -12,27 +12,33 @@
     <div class="informPic">
       <img class="picRes" src="../images/inform.jpg" alt="">    
     </div>
-    <p class="entryTitle_1"><%= entry.title %><p>
-    <p class="entryDate"><%= entry.date %><p>
+    <p class="entryTitle_1"><%= workFlow.title %><p>
+    <p class="entryDate"><%= workFlow.date %><p>
     <div class="entryContent">
-      <% for(let i = 0;i<entry.content.entry.length;i++){ %>
-        <p><%= entry.content.entry[i] %><p>
+      <% for(let i = 0;i<workFlow.content.workFlow.length;i++){ %>
+        <p><%= workFlow.content.entry[i] %><p>
       <% } %>
 
       <table class="tableRe">
-        <% for(let j = 0;j<entry.content.table.length;j++){ %>
+        <% for(let j = 0;j<workFlow.content.table.length;j++){ %>
           <tr class="trRe">
-            <% if(entry.content.table[j].length<entry.content.table[0].length) { %>
+            <% if(workFlow.content.table[j].length<workFlow.content.table[0].length) { %>
             <td class="tdRe"></td>
             <% } %>
-            <% for(let k=0;k<entry.content.table[j].length;k++){ %>
+            <% for(let k=0;k<workFlow.content.table[j].length;k++){ %>
             <td class="tdRe">
-              <%= entry.content.table[j][k] %>
+              <%= workFlow.content.table[j][k] %>
             </td>
             <% } %>
           </tr>
         <% } %>
       </table>
+
+      <div class="imgs">
+        <% for(let j = 0;j<workFlow.content.image.length;j++){ %>
+          <img src="<%= workFlow.content.image[j] %>" alt="">
+        <% } %>
+      </div>
 
     </div>
  </div>

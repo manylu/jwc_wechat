@@ -110,4 +110,22 @@ router.get('/getEntry/:id', async (ctx, next) => {
     });
 })
 
+router.get('/getWorkFlow/:id', async (ctx, next) => {
+  var workFlows = ''
+  var workFlow = ''
+  var id = ''
+  var file="./spider/data/workFlow.json";
+  var result=fs.readFileSync(file);
+  workFlows = JSON.parse(result);
+  id = ctx.params.id
+  workFlow = workFlows[id]
+  ctx.state = {
+    title: 'workFlow title'
+  };
+
+  await ctx.render('workFlow', {
+      workFlow:workFlow
+    });
+})
+
 module.exports = router
