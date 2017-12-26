@@ -116,6 +116,7 @@ function start(pageUrls,requireNumber){
                     var date=matches[0] + '-' + matches[1]+'-' + matches[2]
                     var entry=[]
                     var table=[]
+                    var imageSrc=[]
                     var duanluoLength=$('.content').find('p').length
                     // $('.content>p').each(function(){
                     //     var dl=$(this).text()
@@ -145,14 +146,20 @@ function start(pageUrls,requireNumber){
                        
                     var pArr=$(".content>p")
                     for(var i=0;i<$(".content>p").length;i++){
-                        entry.push(pArr.eq(i).text())
+                        if(pArr.eq(i).find('img').is('img')){
+                            var src='http://www.scuec.edu.cn'+pArr.eq(i).find('img').attr('src')
+                            imageSrc.push(src)
+                         }
+                        else 
+                            entry.push(pArr.eq(i).text())
                     } 
                     var list={
                         title:title,
                         date:date,
                         content:{
                             entry:entry,
-                            table:table
+                            table:table,
+                            image:imageSrc
                         } 
                     }
                     console.log(title) 
@@ -228,7 +235,7 @@ function dataRequire(requireNumber){
 }
 function job(){
     var requireNumber=0
-    return new cronJob('00 */2 * * * *',function(){
+    return new cronJob('00 25 19 * * *',function(){
         dataRequire(requireNumber)
     },null,true,'Asia/Chongqing');
 
