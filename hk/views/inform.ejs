@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>123</title>
+    <title>教务处</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
     <link rel='stylesheet' href='/stylesheets/weui.min.css' />
   </head>
   <body>
   <div class="inform">
-   
-    <p class="informTitle"><%= inform.title %><p>
-    <p class="informDate"><%= inform.date %><p>
+    <div class="informPic">
+      <img class="picRes" src="../images/inform.jpg" alt=""> 
+    </div>
+
+    <p class="informTitle_1"><%= inform.title %><p>
+    <p class="informDate">发布时间:<%= inform.date %><p>
     <div class="informContent">
       <% for(let i = 0;i<inform.content.entry.length;i++){ %>
         <p><%= inform.content.entry[i] %><p>

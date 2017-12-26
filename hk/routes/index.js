@@ -14,13 +14,27 @@ router.get('/string', async (ctx, next) => {
   })
 })
 
+router.get('/getInform_10', async (ctx, next) => {
+  var informs = '';
+  var file="./spider/data/articleInfo.json";
+  var result=fs.readFileSync(file);
+  informs = JSON.parse(result);
+  ctx.state = {
+    title: '重要通知'
+  };
+
+  await ctx.render('getInform_10', {
+      informs:informs
+    });
+})
+
 router.get('/getInform', async (ctx, next) => {
   var informs = '';
   var file="./spider/data/articleInfo.json";
   var result=fs.readFileSync(file);
   informs = JSON.parse(result);
   ctx.state = {
-    title: 'inform title'
+    title: '重要通知'
   };
 
   await ctx.render('getInform', {
@@ -35,7 +49,7 @@ router.get('/getEntry',async function (ctx, next) {
   entrys = JSON.parse(result);
 
   ctx.state = {
-    title: 'entry title'
+    title: '教务动态'
   };
 
   await ctx.render('getEntry', {
