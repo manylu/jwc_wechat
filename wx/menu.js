@@ -1,5 +1,7 @@
 "use strict";
-var hostname = 'http://ducheng.tunnel.qydev.com'
+var hostname = 'http://186176m22q.imwork.net';
+// var hostname = 'http://manylu.com';
+
 module.exports = {
 	"button": [{
 		"name": "微教务",
@@ -10,19 +12,15 @@ module.exports = {
 		},{
 			"name": "考试安排",
 			"type": "view",
-			"url": "http://ehall.scuec.edu.cn/publicapp/sys/ksapapp/index.do"
+			"url": "http://ehall.scuec.edu.cn/publicapp/sys/ksapapp/mobile/examArrange/index.html"
 		},{
 			"name": "课表",
 			"type": "view",
-			"url": "http://ehall.scuec.edu.cn/publicapp/sys/mykbxt/index.do#/curriculum"
+			"url": "http://ehall.scuec.edu.cn/publicapp/sys/mykbxt/mobile/mySchoolTimetable/index.html"
 		},{
-			"name": "教室",
+			"name": "空闲教室",
 			"type": "view",
-			"url": "http://ehall.scuec.edu.cn/publicapp/sys/czxs/index.do"
-		},{
-			"name": "校历",
-			"type": "view",
-			"url": "http://baidu.com"
+			"url": "http://ehall.scuec.edu.cn/publicapp/sys/czxs/mobile/czxs/index.html"
 		}]
 	},{
 		"name": "教务速递",
@@ -31,22 +29,14 @@ module.exports = {
 			"type": "view",
 			"url": hostname + "/getInform"
 		},{
-			"name": "讲座预告",
-			"type": "view",
-			"url": hostname + "/getEntry"
-		},{
 			"name": "教务动态",
 			"type": "view",
-			"url": "http://baidu.com"
-		},{
-			"name": "活动分享",
-			"type": "view",
-			"url": "http://baidu.com"
+			"url": hostname + "/getEntry"
 		}]
 	},{
 		"name": "掌上教务",
 		"sub_button": [{
-			"name": "联系方式",
+			"name": "办事指南",
 			"type": "view",
 			"url": "http://baidu.com"
 		},{
@@ -54,7 +44,11 @@ module.exports = {
 			"type": "view",
 			"url": "http://baidu.com"
 		},{
-			"name": "办事指南",
+			"name": "联系方式",
+			"type": "view",
+			"url": "http://baidu.com"
+		},{
+			"name": "校历testhhh",
 			"type": "view",
 			"url": "http://baidu.com"
 		}]

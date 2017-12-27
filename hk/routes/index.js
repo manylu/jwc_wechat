@@ -16,7 +16,7 @@ router.get('/string', async (ctx, next) => {
 
 router.get('/getInform_10', async (ctx, next) => {
   var informs = '';
-  var file="./spider/data/articleInfo.json";
+  var file="./spider/data/atticleInfo.json";
   var result=fs.readFileSync(file);
   informs = JSON.parse(result);
   ctx.state = {
@@ -30,7 +30,7 @@ router.get('/getInform_10', async (ctx, next) => {
 
 router.get('/getInform', async (ctx, next) => {
   var informs = '';
-  var file="./spider/data/articleInfo.json";
+  var file="./spider/data/atticleInfo.json";
   var result=fs.readFileSync(file);
   informs = JSON.parse(result);
   ctx.state = {
@@ -62,7 +62,7 @@ router.get('/getInform/:id', async (ctx, next) => {
   var informs = ''
   var inform = ''
   var id = ''
-  var file="./spider/data/articleInfo.json";
+  var file="./spider/data/atticleInfo.json";
   var result=fs.readFileSync(file);
   informs = JSON.parse(result);
   id = ctx.params.id

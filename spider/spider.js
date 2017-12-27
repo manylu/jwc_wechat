@@ -226,7 +226,7 @@ function dataRequire(requireNumber){
 }
 function job(){
     var requireNumber=0
-    return new cronJob('00 */2 * * * *',function(){
+    return new cronJob('00 30 10 * * *',function(){
         dataRequire(requireNumber)
     },null,true,'Asia/Chongqing');
 
