@@ -33,6 +33,12 @@
           </tr>
         <% } %>
       </table>
+      
+      <div class="imgs">
+        <% for(let j = 0;j<entry.content.image.length;j++){ %>
+          <img src="<%= entry.content.image[j] %>" alt="">
+        <% } %>
+      </div>
 
     </div>
  </div>
