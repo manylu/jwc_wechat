@@ -144,14 +144,27 @@ function start(pageUrls,requireNumber){
                     // ep.after('duanluo',duanluoLength,function(p){
                         // console.log(p)
                        
-                    var pArr=$(".content>p")
-                    for(var i=0;i<$(".content>p").length;i++){
-                        if(pArr.eq(i).find('img').is('img')){
-                            var src='http://www.scuec.edu.cn'+pArr.eq(i).find('img').attr('src')
-                            imageSrc.push(src)
-                         }
-                        else 
-                            entry.push(pArr.eq(i).text())
+                    if($('.content').children().is('p')){
+                        var pArr=$(".content>p")
+                        for(var i=0;i<$(".content>p").length;i++){
+                            if(pArr.eq(i).find('img').is('img')){
+                                var src='http://www.scuec.edu.cn'+pArr.eq(i).find('img').attr('src')
+                                imageSrc.push(src)
+                             }
+                            else 
+                                entry.push(pArr.eq(i).text())
+                        }
+                    }
+                    if($('.content').children().is('div')){
+                        var divArr=$('.content>div')
+                        for(var i=0;i<$(".content>div").length;i++){
+                            if(divArr.eq(i).find('img').is('img')){
+                                var src='http://www.scuec.edu.cn'+divArr.eq(i).find('img').attr('src')
+                                imageSrc.push(src)
+                             }
+                            else 
+                                entry.push(divArr.eq(i).text())
+                        }
                     } 
                     var list={
                         title:title,
@@ -235,7 +248,7 @@ function dataRequire(requireNumber){
 }
 function job(){
     var requireNumber=0
-    return new cronJob('00 30 10 * * *',function(){
+    return new cronJob('00 */2 * * * *',function(){
         dataRequire(requireNumber)
     },null,true,'Asia/Chongqing');
 
