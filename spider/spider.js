@@ -11,7 +11,7 @@ var titleNum=0
 var timestamp=(new Date()).valueOf()*100000; 
 var targetUrl=['http://www.scuec.edu.cn/s/27/t/1536/p/14/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/17/i.htm?'+timestamp]
 // var titleRecordUrl='http://www.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp
-var jsonPath=['./data/atticleInfo.json','./data/dynamicEntry.json','./data/workFlow.json']
+var jsonPath=['./data/articleInfo.json','./data/dynamicEntry.json','./data/workFlow.json']
 // var ArticleUrls=[]
 var count=0
 // var requireNumber=0
@@ -169,6 +169,7 @@ function start(pageUrls,requireNumber){
                     //     }
                     // } 
                     var entry=$('.content').html()
+                    entry=entry.replace(/\/picture\/article/g, "http://www.scuec.edu.cn/picture/article")
                     var list={
                         title:title,
                         date:date,
