@@ -108,13 +108,13 @@ function start(pageUrls,requireNumber){
                         console.log("error exception occured !"+data.status);
                         
                     }
-                    var $=cheerio.load(data.text)
+                    var $=cheerio.load(data.text,{decodeEntities: false})
                     // console.log(url)
                     var title=$('.biaoti3').text()
                     // titles.push(title)
                     var matches=$('.STYLE2').text().match(/\d+/g)
                     var date=matches[0] + '-' + matches[1]+'-' + matches[2]
-                    var entry=[]
+                   
                     var table=[]
                     var imageSrc=[]
                     var duanluoLength=$('.content').find('p').length
@@ -124,55 +124,58 @@ function start(pageUrls,requireNumber){
                     //     ep.emit('duanluo',dl)
                         
                     // })
-                    var tableList=$('.content table tr')
-                    for(var i=0;i<tableList.length;i++){
-                        var td=$('.content table tr').eq(i).children()
-                        var tr=[];
-                        // console.log(td)
-                        // console.log(td.text())
-                        for(var j=0;j<td.length;j++){
-                            // if(td.length<$('.content table tr').eq(0).children().length){
-                            //     tr.push('')
-                            // }
-                            tr.push(td.eq(j).find('p').text())
-                            // console.log(tr)
-                        }
-                        table.push(tr)
+                    // 爬取表格
+                    // var tableList=$('.content table tr')
+                    // for(var i=0;i<tableList.length;i++){
+                    //     var td=$('.content table tr').eq(i).children()
+                    //     var tr=[];
+                    //     // console.log(td)
+                    //     // console.log(td.text())
+                    //     for(var j=0;j<td.length;j++){
+                    //         // if(td.length<$('.content table tr').eq(0).children().length){
+                    //         //     tr.push('')
+                    //         // }
+                    //         tr.push(td.eq(j).find('p').text())
+                    //         // console.log(tr)
+                    //     }
+                    //     table.push(tr)
                         
-                    }
-                    // console.log(table)
-                    // ep.after('duanluo',duanluoLength,function(p){
-                        // console.log(p)
-                       
-                    if($('.content').children().is('p')){
-                        var pArr=$(".content>p")
-                        for(var i=0;i<$(".content>p").length;i++){
-                            if(pArr.eq(i).find('img').is('img')){
-                                var src='http://www.scuec.edu.cn'+pArr.eq(i).find('img').attr('src')
-                                imageSrc.push(src)
-                             }
-                            else 
-                                entry.push(pArr.eq(i).text())
-                        }
-                    }
-                    if($('.content').children().is('div')){
-                        var divArr=$('.content>div')
-                        for(var i=0;i<$(".content>div").length;i++){
-                            if(divArr.eq(i).find('img').is('img')){
-                                var src='http://www.scuec.edu.cn'+divArr.eq(i).find('img').attr('src')
-                                imageSrc.push(src)
-                             }
-                            else 
-                                entry.push(divArr.eq(i).text())
-                        }
-                    } 
+                    // }
+                    // // console.log(table)
+                    // // ep.after('duanluo',duanluoLength,function(p){
+                    //     // console.log(p)
+                       //爬取正文
+                    // if($('.content').children().is('p')){
+                    //     var pArr=$(".content>p")
+                    //     for(var i=0;i<$(".content>p").length;i++){
+                    //         if(pArr.eq(i).find('img').is('img')){
+                    //             var src='http://www.scuec.edu.cn'+pArr.eq(i).find('img').attr('src')
+                    //             imageSrc.push(src)
+                    //          }
+                    //         else 
+                    //             entry.push(pArr.eq(i).text())
+                    //     }
+                    // }
+                    //爬取图片
+                    // if($('.content').children().is('div')){
+                    //     var divArr=$('.content>div')
+                    //     for(var i=0;i<$(".content>div").length;i++){
+                    //         if(divArr.eq(i).find('img').is('img')){
+                    //             var src='http://www.scuec.edu.cn'+divArr.eq(i).find('img').attr('src')
+                    //             imageSrc.push(src)
+                    //          }
+                    //         else 
+                    //             entry.push(divArr.eq(i).text())
+                    //     }
+                    // } 
+                    var entry=$('.content').html()
                     var list={
                         title:title,
                         date:date,
                         content:{
                             entry:entry,
-                            table:table,
-                            image:imageSrc
+                            // table:table,
+                            // image:imageSrc
                         } 
                     }
                     console.log(title) 
@@ -233,11 +236,6 @@ function dataRequire(requireNumber){
     
             var maxPage=Math.ceil(html/14)
             titleNum=parseInt(html)
-            if(titleNum>140)
-            {
-                maxPage=10;
-                titleNum=140
-            }
             console.log(maxPage)
             console.log("开始执行！")
             dataHandle(maxPage,targetUrl[requireNumber],requireNumber)
@@ -253,6 +251,6 @@ function job(){
     },null,true,'Asia/Chongqing');
 
 }
-// job()
-module.exports=job
+job()
+// module.exports=job
 
