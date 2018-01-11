@@ -23,8 +23,12 @@
 .picRes{
 	max-width: 100%;
 }
+.inform{
+	width: 100%;
+	overflow: hidden;
+}
 .informs{
-	font-size: 14px;
+	font-size: 16px;
 }
 .informPic{
 	margin-bottom: 10px;
@@ -40,8 +44,10 @@
 	background-color: rgba(26,173,25,1);
 }
 .informTitle{
+	font-size: 18px;
+	padding: 2px 0;
 	margin-left: 8px;
-	background-color: rgba(204,204,204,.3);
+	background-color: rgba(204,204,204,.5);
 	overflow: hidden;/*超出部分隐藏*/
     white-space: nowrap;/*不换行*/
     text-overflow:ellipsis;/*超出部分文字以...显示*/
@@ -50,6 +56,7 @@
 	color: #000;
 }
 .informTitle_1{
+	font-size: 20px;
 	width: 80%;
 	margin: 10px auto;
 	color: #86a1ba;
@@ -64,7 +71,7 @@
 	margin: 0 auto;
 }
 .entrys{
-	font-size: 14px;
+	font-size: 16px;
 }
 .entryPic{
 	margin-bottom: 10px;
@@ -80,8 +87,10 @@
 	background-color: rgba(26,173,25,1);
 }*/
 .entryTitle{
+	font-size: 18px;
+	padding: 2px 0;
 	margin-left: 8px;
-	background-color: rgba(204,204,204,.3);
+	background-color: rgba(204,204,204,.5);
 	overflow: hidden;/*超出部分隐藏*/
     white-space: nowrap;/*不换行*/
     text-overflow:ellipsis;/*超出部分文字以...显示*/
@@ -90,6 +99,7 @@
 	color: #000;
 }
 .entryTitle_1{
+	font-size: 20px;
 	width: 80%;
 	margin: 10px auto;
 	color: #86a1ba;
@@ -126,4 +136,18 @@
 }
 .tdRe{
 	border: 1px solid #000;
+}
+.entryContent img{
+	max-width: 240px !important;
+	max-height: 180px  !important;
+}
+.entryContent table{
+	width: 100% !important;
+}
+.informContent img{
+	max-width: 240px !important;
+	max-height: 180px  !important;
+}
+.informContent table{
+	width: 100% !important;
 }

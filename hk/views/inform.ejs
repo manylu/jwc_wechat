@@ -16,36 +16,12 @@
     <p class="informTitle_1"><%= inform.title %><p>
     <p class="informDate">发布时间:<%= inform.date %><p>
     <div class="informContent">
-      <% for(let i = 0;i<inform.content.entry.length;i++){ %>
-        <p><%= inform.content.entry[i] %><p>
-      <% } %>
-      
-      <table class="tableRe">
-        <% for(let j = 0;j<inform.content.table.length;j++){ %>
-          <tr class="trRe">
-            <% if(inform.content.table[j].length<inform.content.table[0].length) { %>
-            <td class="tdRe"></td>
-            <% } %>
-            <% for(let k=0;k<inform.content.table[j].length;k++){ %>
-            <td class="tdRe">
-              <%= inform.content.table[j][k] %>
-            </td>
-            <% } %>
-          </tr>
-        <% } %>
-      </table>
-      
-      <div class="imgs">
-        <% for(let j = 0;j<inform.content.image.length;j++){ %>
-          <img src="<%= inform.content.image[j] %>" alt="">
-        <% } %>
-      </div>
-
+      <%- inform.content.entry %>
     </div>
  </div>
     
   
   <script src='/javascripts/jquery-2.1.4.js'></script>
-  <script src='/javascripts/jquery-weui.min.js'></script>
+  <!-- <script src='/javascripts/jquery-weui.min.js'></script> -->
   </body>
 </html>
