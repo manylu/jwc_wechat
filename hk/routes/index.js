@@ -59,17 +59,17 @@ router.get('/getEntry',async function (ctx, next) {
 })
 
 router.get('/getWorkFlow',async function (ctx, next) {
-  var workFlows = '';
+  var entrys = '';
   var file="./spider/data/workFlow.json";
   var result=fs.readFileSync(file);
-  workFlows = JSON.parse(result);
+  entrys = JSON.parse(result);
 
   ctx.state = {
     title: '业务流程'
   };
 
   await ctx.render('getWorkFlow', {
-      workFlows:workFlows
+          workFlows:entrys
     });
    
 })
@@ -111,20 +111,20 @@ router.get('/getEntry/:id', async (ctx, next) => {
 })
 
 router.get('/getWorkFlow/:id', async (ctx, next) => {
-  var workFlows = ''
-  var workFlow = ''
+  var entrys = ''
+  var entry = ''
   var id = ''
   var file="./spider/data/workFlow.json";
   var result=fs.readFileSync(file);
-  workFlows = JSON.parse(result);
+  entrys = JSON.parse(result);
   id = ctx.params.id
-  workFlow = workFlows[id]
+  entry = entrys[id]
   ctx.state = {
-    title: 'workFlow title'
+    title: '业务流程'
   };
 
   await ctx.render('workFlow', {
-      workFlow:workFlow
+      workFlow:entry
     });
 })
 
