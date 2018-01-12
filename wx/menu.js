@@ -38,7 +38,7 @@ module.exports = {
 		"sub_button": [{
 			"name": "办事指南",
 			"type": "view",
-			"url": "http://baidu.com"
+			"url": hostname + "/getWorkFlow"
 		},{
 			"name": "微课程学习",
 			"type": "view",
@@ -48,7 +48,7 @@ module.exports = {
 			"type": "view",
 			"url": "http://baidu.com"
 		},{
-			"name": "校历testhhh",
+			"name": "校历",
 			"type": "view",
 			"url": "http://baidu.com"
 		}]

@@ -127,3 +127,9 @@
 .tdRe{
 	border: 1px solid #000;
 }
+.imgs{
+	width: 80%
+}
+.imgs img{
+	width: 100%;
+}

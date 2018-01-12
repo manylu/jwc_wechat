@@ -9,9 +9,9 @@ var cronJob=require('cron').CronJob
 var ep=new eventproxy()
 var titleNum=0
 var timestamp=(new Date()).valueOf()*100000; 
-var targetUrl=['http://www.scuec.edu.cn/s/27/t/1536/p/14/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp]
+var targetUrl=['http://www.scuec.edu.cn/s/27/t/1536/p/14/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/15/i.htm?'+timestamp,'http://www.scuec.edu.cn/s/27/t/1536/p/17/i.htm?'+timestamp]
 // var titleRecordUrl='http://www.scuec.edu.cn/s/27/t/1536/p/14/i.jspy?'+timestamp
-var jsonPath=['./data/atticleInfo.json','./data/dynamicEntry.json']
+var jsonPath=['./data/atticleInfo.json','./data/dynamicEntry.json','./data/workFlow.json']
 // var ArticleUrls=[]
 var count=0
 // var requireNumber=0
@@ -116,6 +116,7 @@ function start(pageUrls,requireNumber){
                     var date=matches[0] + '-' + matches[1]+'-' + matches[2]
                     var entry=[]
                     var table=[]
+                    var imageSrc=[]
                     var duanluoLength=$('.content').find('p').length
                     // $('.content>p').each(function(){
                     //     var dl=$(this).text()
@@ -145,14 +146,20 @@ function start(pageUrls,requireNumber){
                        
                     var pArr=$(".content>p")
                     for(var i=0;i<$(".content>p").length;i++){
-                        entry.push(pArr.eq(i).text())
+                        if(pArr.eq(i).find('img').is('img')){
+                            var src='http://www.scuec.edu.cn'+pArr.eq(i).find('img').attr('src')
+                            imageSrc.push(src)
+                         }
+                        else 
+                            entry.push(pArr.eq(i).text())
                     } 
                     var list={
                         title:title,
                         date:date,
                         content:{
                             entry:entry,
-                            table:table
+                            table:table,
+                            image:imageSrc
                         } 
                     }
                     console.log(title) 
@@ -213,9 +220,11 @@ function dataRequire(requireNumber){
     
             var maxPage=Math.ceil(html/14)
             titleNum=parseInt(html)
-            if(maxPage>10){
-                maxPage=10
-            }
+            // if(titleNum>140)
+            // {
+            //     maxPage=10;
+            //     titleNum=140
+            // }
             console.log(maxPage)
             console.log("开始执行！")
             dataHandle(maxPage,targetUrl[requireNumber],requireNumber)
@@ -226,10 +235,12 @@ function dataRequire(requireNumber){
 }
 function job(){
     var requireNumber=0
+
     return new cronJob('00 30 10 * * *',function(){
         dataRequire(requireNumber)
     },null,true,'Asia/Chongqing');
 
 }
+// job()
 module.exports=job
 

@@ -48,10 +48,11 @@ app.use(users.routes(), users.allowedMethods())
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
+
 job();
 app.use(m(config.wechat,reply.reply));
 console.log("app is starting");
 // app.listen(1234);
-app.listen(1234);
+app.listen(1233);
 
 module.exports = app;
