@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>业务流程</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery-weui.min.css' />
+    <link rel='stylesheet' href='/stylesheets/weui.min.css' />
+  </head>
+  <body>
+  <div class="entry">
+    <div class="informPic">
+      <img class="picRes" src="../images/inform.jpg" alt="">    
+    </div>
+    <p class="entryTitle_1"><%= workFlow.title %><p>
+    <p class="entryDate"><%= workFlow.date %><p>
+    <div class="entryContent">
+      <%- workFlow.content.entry %>
+
+    </div>
+ </div>
+    
+  
+  <script src='/javascripts/jquery-2.1.4.js'></script>
+  <!-- <script src='/javascripts/jquery-weui.min.js'></script> -->
+  </body>
+</html>

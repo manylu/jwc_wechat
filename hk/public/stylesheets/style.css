@@ -137,6 +137,13 @@
 .tdRe{
 	border: 1px solid #000;
 }
+
+/*.imgs{
+	width: 80%
+}
+.imgs img{
+	width: 100%;
+}*/
 .entryContent img{
 	max-width: 240px !important;
 	max-height: 180px  !important;

@@ -28,20 +28,17 @@ app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/hk/public'))
 
-// app.use(views(__dirname + '/views', {
-//   extension: 'pug'
-// }))
 app.use(views(__dirname + '/hk/views', {
   extension: 'ejs'
 }));
 
 // logger
-app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
+// app.use(async (ctx, next) => {
+//   const start = new Date()
+//   await next()
+//   const ms = new Date() - start
+//   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+// })
 
 // routes
 app.use(index.routes(), index.allowedMethods())
@@ -51,10 +48,11 @@ app.use(users.routes(), users.allowedMethods())
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
-//2
+
 job();
 app.use(m(config.wechat,reply.reply));
 console.log("app is starting");
-app.listen(1234);
+// app.listen(1234);
+app.listen(1233);
 
 module.exports = app;

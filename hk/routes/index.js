@@ -16,7 +16,7 @@ router.get('/string', async (ctx, next) => {
 
 router.get('/getInform_10', async (ctx, next) => {
   var informs = '';
-  var file="./spider/data/articleInfo.json";
+  var file="./spider/data/atticleInfo.json";
   var result=fs.readFileSync(file);
   informs = JSON.parse(result);
   ctx.state = {
@@ -30,7 +30,7 @@ router.get('/getInform_10', async (ctx, next) => {
 
 router.get('/getInform', async (ctx, next) => {
   var informs = '';
-  var file="./spider/data/articleInfo.json";
+  var file="./spider/data/atticleInfo.json";
   var result=fs.readFileSync(file);
   informs = JSON.parse(result);
   ctx.state = {
@@ -58,11 +58,30 @@ router.get('/getEntry',async function (ctx, next) {
    
 })
 
+<<<<<<< HEAD
+=======
+router.get('/getWorkFlow',async function (ctx, next) {
+  var entrys = '';
+  var file="./spider/data/workFlow.json";
+  var result=fs.readFileSync(file);
+  entrys = JSON.parse(result);
+
+  ctx.state = {
+    title: '业务流程'
+  };
+
+  await ctx.render('getWorkFlow', {
+          workFlows:entrys
+    });
+   
+})
+
+>>>>>>> 736921e8109e4b52305341dc12d1e3ce668670b1
 router.get('/getInform/:id', async (ctx, next) => {
   var informs = ''
   var inform = ''
   var id = ''
-  var file="./spider/data/articleInfo.json";
+  var file="./spider/data/atticleInfo.json";
   var result=fs.readFileSync(file);
   informs = JSON.parse(result);
   id = ctx.params.id
@@ -94,4 +113,25 @@ router.get('/getEntry/:id', async (ctx, next) => {
     });
 })
 
+<<<<<<< HEAD
+=======
+router.get('/getWorkFlow/:id', async (ctx, next) => {
+  var entrys = ''
+  var entry = ''
+  var id = ''
+  var file="./spider/data/workFlow.json";
+  var result=fs.readFileSync(file);
+  entrys = JSON.parse(result);
+  id = ctx.params.id
+  entry = entrys[id]
+  ctx.state = {
+    title: '业务流程'
+  };
+
+  await ctx.render('workFlow', {
+      workFlow:entry
+    });
+})
+
+>>>>>>> 736921e8109e4b52305341dc12d1e3ce668670b1
 module.exports = router
