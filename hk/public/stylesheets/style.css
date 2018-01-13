@@ -47,13 +47,14 @@
 	font-size: 18px;
 	padding: 2px 0;
 	margin-left: 8px;
-	background-color: rgba(204,204,204,.5);
+	border-radius: 3px;
+	background-color: rgba(26,173,25,.8);
 	overflow: hidden;/*超出部分隐藏*/
     white-space: nowrap;/*不换行*/
     text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 .informTitle a{
-	color: #000;
+	color: #fff;
 }
 .informTitle_1{
 	font-size: 20px;
@@ -90,13 +91,14 @@
 	font-size: 18px;
 	padding: 2px 0;
 	margin-left: 8px;
-	background-color: rgba(204,204,204,.5);
+	border-radius: 3px;
+	background-color: rgba(26,173,25,.8);
 	overflow: hidden;/*超出部分隐藏*/
     white-space: nowrap;/*不换行*/
     text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 .entryTitle a{
-	color: #000;
+	color: #fff;
 }
 .entryTitle_1{
 	font-size: 20px;
